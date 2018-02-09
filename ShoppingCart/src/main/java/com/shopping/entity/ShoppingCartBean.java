@@ -7,13 +7,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.springframework.stereotype.Component;
 
 
+/*This Bean is used for Shopping Cart */
+
 @Component
 //@Scope("session")
 public class ShoppingCartBean {
 
-	//private List<Integer> products = new ArrayList<Integer>();
-	//private int productsQuantity = 1;
-	//private Hashtable<Integer,Integer> products = new Hashtable<Integer,Integer>();
 	private Map<Integer,Integer> products = new ConcurrentHashMap<Integer,Integer>();
 	
 	public Map<Integer,Integer> getProducts() {
