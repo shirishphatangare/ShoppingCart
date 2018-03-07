@@ -14,19 +14,20 @@
 
 
 function addToCart(productId){
-	//alert(productId);
+   var selectId = "productQuantity" + productId;
+   var productQuantity = document.getElementById(selectId).value;	
+	
    var token = $("meta[name='_csrf']").attr("content");
    var header = $("meta[name='_csrf_header']").attr("content");		
    
-   $.ajax({url: '/ShoppingCart/updateCart',
+   $.ajax({url: '/ShoppingCart/addToCart',
    type: 'POST', 
-   data: "productId="+productId,
+   data: {"productId": productId, "productQuantity": productQuantity},
    beforeSend: function(xhr) {
-       // here it is
        xhr.setRequestHeader(header, token);
    },
    success: function(data) {
-	alert("Added to Cart: " + productId)
+	//alert("Added to Cart: " + productId)
    }
    });
 }
@@ -39,19 +40,24 @@ function addToCart(productId){
 <c:forEach var="product" items="${pList}" >
   <table width="70%" height="50px;" border="0">
     <tr>
+    <th>Id</th>
     <th>Name</th>
     <th>Author</th>
     <th>Price</th>
     </tr>
     <tr style = "text-align:center">
+    	<td>${product.id}</td>
         <td>${product.productName}</td>
         <td>${product.productAuthor}</td>
         <td>${product.productPrice}</td>
         <td>
-        
-        <button type="button" `id="addCartLink" onclick="addToCart(${product.id})""> Add To Cart  </button>
-        
-        
+          Quantity
+          <select id="productQuantity${product.id}">
+			<c:forEach begin="1" end="10" var="counter">
+        		<option value="${counter}" >${counter}</option>
+    		</c:forEach>
+		  </select>
+          <button type="button" id="addCartLink" onclick="addToCart(${product.id})"> Add To Cart  </button>
         </td>
     </tr>
     </br>

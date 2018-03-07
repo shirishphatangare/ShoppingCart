@@ -23,6 +23,16 @@
 </c:if> 
 
 
+<c:if test="${usercreatedsuccess != null}">
+<c:choose>
+<c:when test="${usercreatedsuccess}">
+	user created Successfully!!
+</c:when>
+<c:otherwise>
+	user creation Failed!!
+</c:otherwise>
+</c:choose>
+</c:if> 
 
 <p>username: <input type="text" name="username"/> </p>
 <p>password: <input type="password" name="password"/></p>

@@ -2,12 +2,9 @@ package com.shopping.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,13 +24,20 @@ public class ShoppingProductBean {
 	@Column(name="productPrice")
 	private int productPrice;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "fk_order")
-    private ShoppingOrderDetailBean order;
-	
 	public ShoppingProductBean() {
 		
 	}
+	
+	
+
+	public ShoppingProductBean(String productName, String productAuthor, int productPrice) {
+		super();
+		this.productName = productName;
+		this.productAuthor = productAuthor;
+		this.productPrice = productPrice;
+	}
+
+
 
 	public int getId() {
 		return id;
@@ -42,7 +46,8 @@ public class ShoppingProductBean {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	
+		
 	public String getProductName() {
 		return productName;
 	}
@@ -66,5 +71,5 @@ public class ShoppingProductBean {
 	public void setProductPrice(int productPrice) {
 		this.productPrice = productPrice;
 	}
-	
+
 }

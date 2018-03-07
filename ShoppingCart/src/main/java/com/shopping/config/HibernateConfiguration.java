@@ -52,6 +52,7 @@ public class HibernateConfiguration {
 	            setProperty("dialect", "org.hibernate.dialect.MySQL57Dialect");
 	            setProperty("show_sql", "true");
 	            setProperty("current_session_context_class", "thread");
+	            //setProperty("hibernate.hbm2ddl.auto", "create");
 	         }
 	      };
 	   }
