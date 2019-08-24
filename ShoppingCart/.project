@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ShoppingCart</name>
+	<name>ShoppingCart-springmvc-security-mysql</name>
 	<comment>Project spring.security.webmvc created by Buildship.</comment>
 	<projects>
 	</projects>
