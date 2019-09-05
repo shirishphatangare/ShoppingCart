@@ -7,26 +7,21 @@ import com.example.springbootsecurity.shopping.entity.ShoppingUserBean;
 
 @Service
 public class LoginServiceImpl implements LoginService {
+
 	@Autowired
 	private LoginDAO logindao;
-	
-
-	
-	/* (non-Javadoc)
-	 * @see com.shopping.login.LoginService#registerNewUser(com.shopping.entity.ShoppingUserBean)
-	 */
 	
 	public boolean registerNewUser(ShoppingUserBean newUser) {
 		boolean success = false;
 		try {
-			logindao.createUser(newUser);
-			success = true;
+			ShoppingUserBean savedUser = logindao.save(newUser);
+			if(savedUser.equals(newUser)) {
+				success = true;
+			}
 		}catch(Exception e) {
 			success = false;
 		}
 		return success;
 	}
 	
-	
-
 }

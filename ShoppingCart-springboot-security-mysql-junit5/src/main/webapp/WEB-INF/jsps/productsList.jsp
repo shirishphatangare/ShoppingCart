@@ -10,9 +10,9 @@
 	<meta name="_csrf" content="${_csrf.token}"/>
 	<meta name="_csrf_header" content="${_csrf.headerName}"/>
     <title>Welcome To Shopping Cart</title>
-	<link href="${pageContext.request.contextPath}/static/bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
-	<link href="${pageContext.request.contextPath}/static/home.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/home.css" rel="stylesheet">
 </head>
 <body>
 
@@ -83,6 +83,6 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/shoppingCart.js"></script>
+    <script src="${pageContext.request.contextPath}/js/shoppingCart.js"></script>
 </body>
 </html>

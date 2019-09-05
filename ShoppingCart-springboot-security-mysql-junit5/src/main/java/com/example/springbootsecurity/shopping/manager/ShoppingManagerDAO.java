@@ -1,9 +1,11 @@
 package com.example.springbootsecurity.shopping.manager;
 
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
 import com.example.springbootsecurity.shopping.entity.ShoppingProductBean;
 
-public interface ShoppingManagerDAO {
-
-	void createProduct(ShoppingProductBean newProduct);
+@Repository
+public interface ShoppingManagerDAO  extends CrudRepository<ShoppingProductBean,Long>{
 
 }

@@ -9,10 +9,10 @@
     <meta charset="utf-8">
     <title>Welcome To Shopping Cart</title>
 
-	<link href="${pageContext.request.contextPath}/static/bootstrap.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="${pageContext.request.contextPath}/static/home.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/css/home.css" rel="stylesheet">
   </head>
 
   <body>

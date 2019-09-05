@@ -1,6 +1,8 @@
 package com.example.springbootsecurity.shopping.employee;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,34 +13,29 @@ import com.example.springbootsecurity.shopping.entity.ShoppingOrderDetailBean;
 public class ShoppingEmployeeServiceImpl implements ShoppingEmployeeService {
 	
 	@Autowired
-	private ShoppingEmployeeDAO sed;
-	
-	/* (non-Javadoc)
-	 * @see com.shopping.employee.ShoppingEmployeeService#showOrders()
-	 */
+	private ShoppingEmployeeDAO shoppingEmployeeDAO;
 	
 	public List <ShoppingOrderDetailBean> showOrders() {
-		List <ShoppingOrderDetailBean> orderDetails = null;
+		List <ShoppingOrderDetailBean> orderDetails = new ArrayList<ShoppingOrderDetailBean>();
 		try {
-			orderDetails = sed.showOrders();
+			shoppingEmployeeDAO.findAll().forEach(orderDetails::add);
 		}catch (Exception e) {
-			
+			System.out.println("Exception while showing orders: " +  e);
+			e.printStackTrace();
 		}
 		return orderDetails;
 	}
 	
-	/* (non-Javadoc)
-	 * @see com.shopping.employee.ShoppingEmployeeService#viewOrderDetails(int)
-	 */
 	
-	public ShoppingOrderDetailBean viewOrderDetails(int orderId){
-		ShoppingOrderDetailBean orderDetail = null; 
+	public ShoppingOrderDetailBean viewOrderDetails(Long orderId){
+		Optional<ShoppingOrderDetailBean> orderDetail = null; 
 		try {
-			orderDetail = sed.viewOrderDetails(orderId);
+			orderDetail = shoppingEmployeeDAO.findById(orderId);
 		}catch(Exception e) {
-			
+			System.out.println("Exception while showing particular order: " +  e);
+			e.printStackTrace();
 		}
-		return orderDetail;
+		return orderDetail.get();
 	}
 	
 }

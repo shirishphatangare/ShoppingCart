@@ -10,9 +10,9 @@
 <meta name="_csrf" content="${_csrf.token}"/>
 <meta name="_csrf_header" content="${_csrf.headerName}"/>
 
-<link href="${pageContext.request.contextPath}/static/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/static/home.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/home.css" rel="stylesheet">
 </head>
 <body>
 <h3 class="text-center">Create a Product </h3>

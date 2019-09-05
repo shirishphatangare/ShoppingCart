@@ -3,9 +3,11 @@ package com.example.springbootsecurity.shopping.manager;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.springbootsecurity.shopping.entity.ShoppingProductBean;
 
@@ -13,21 +15,19 @@ import com.example.springbootsecurity.shopping.entity.ShoppingProductBean;
 @Controller
 public class ShoppingManagerController {
 
-	
 	@Autowired
-	private ShoppingManagerService managerService;	
+	private ShoppingEmployeeService managerService;	
 
 
-	
-	@RequestMapping("/mgr/createProduct")
+	@GetMapping("/mgr/createProduct")
+	@Secured({"ROLE_MANAGER"})
 	public String createProduct() {
 		return "createProduct";
-		
 	}
 	
 	
-	
-	@RequestMapping("/mgr/submitNewProduct")
+	@PostMapping("/mgr/submitNewProduct")
+	@Secured({"ROLE_MANAGER"})
 	public String submitNewProduct(HttpServletRequest request, Model m) {
 		String productName = request.getParameter("productName");
 		String productAuthor = request.getParameter("productAuthor");
@@ -38,7 +38,4 @@ public class ShoppingManagerController {
 		return "createProduct";
 	}
 
-	
-
-	
 }

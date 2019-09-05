@@ -9,8 +9,8 @@ public interface ShoppingUserService {
 
 	List<ShoppingProductBean> showAllProducts();
 
-	ShoppingProductBean getProduct(int productId);
+	ShoppingProductBean getProduct(long productId);
 
-	void placeOrder(List<ShoppingProductDetailBean> productsList);
+	boolean placeOrder(List<ShoppingProductDetailBean> productsList);
 
 }

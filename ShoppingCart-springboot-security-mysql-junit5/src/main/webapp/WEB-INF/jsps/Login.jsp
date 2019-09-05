@@ -10,10 +10,10 @@
 <title>Login ShoppingCart</title>
 
 <!-- Bootstrap core CSS -->
-<link href="${pageContext.request.contextPath}/static/bootstrap.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="${pageContext.request.contextPath}/static/login.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/login.css" rel="stylesheet">
 </head>
 
 <body class="text-center">
@@ -39,8 +39,6 @@
 			</c:choose>
 		</c:if>
 		
-		<button class="btn btn-sm btn-primary" type="button" id="addCartLink" onclick="testAlert()"> Test  </button>
-
 		<h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
 		<label for="inputEmail" class="sr-only">Email address</label> 
 			<input
@@ -68,7 +66,7 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/static/shoppingCart.js"></script>
+    <script src="${pageContext.request.contextPath}/js/shoppingCart.js"></script>
 	
 </body>
 </html>

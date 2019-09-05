@@ -15,41 +15,41 @@ import org.springframework.stereotype.Component;
 @Scope(value="session",proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class ShoppingCartBean {
 
-	private Map<Integer,Integer> shoppingCart = new ConcurrentHashMap<Integer,Integer>();
+	private Map<Long,Integer> shoppingBasket = new ConcurrentHashMap<Long,Integer>();
 	
-	public Map<Integer,Integer> getProducts() {
-		return shoppingCart;
+	public Map<Long,Integer> getProducts() {
+		return shoppingBasket;
 	}
 	
 	
-	public void addToCart(int productId,int quantity) {
+	public void addToCart(long productId,int quantity) {
 		int currentProductQuantity;
-		if(shoppingCart.get(productId) == null) {
+		if(shoppingBasket.get(productId) == null) {
 			currentProductQuantity = 0;
 		}else {
-			currentProductQuantity = shoppingCart.get(productId);
+			currentProductQuantity = shoppingBasket.get(productId);
 		}
-		shoppingCart.put(productId, (currentProductQuantity + quantity));
+		shoppingBasket.put(productId, (currentProductQuantity + quantity));
 	}
 	
-	public void updateCart(int productId,int quantity) {
-		shoppingCart.put(productId, quantity);
+	public void updateCart(long productId,int quantity) {
+		shoppingBasket.put(productId, quantity);
 	}
 	
-	public void removeFromCart(int productId) {
-		shoppingCart.remove(productId);
+	public void removeFromCart(long productId) {
+		shoppingBasket.remove(productId);
 	}
 	
 	public void emptyCart() {
-		shoppingCart.clear();
+		shoppingBasket.clear();
 	}
 	
-	public Iterator<Integer> getCartIterator() {
-		return shoppingCart.keySet().iterator();
+	public Iterator<Long> getCartIterator() {
+		return shoppingBasket.keySet().iterator();
 	}
 	
-	public int getProductQuantity(int productId) {
-		return shoppingCart.get(productId);
+	public int getProductQuantity(long productId) {
+		return shoppingBasket.get(productId);
 	}
 	
 

@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="productDetails")
+@Table(name="productdetails")
 public class ShoppingProductDetailBean {
 	
 	
@@ -21,13 +21,13 @@ public class ShoppingProductDetailBean {
 	
 	
 	@OneToOne
-	@JoinColumn(name="productId")
+	@JoinColumn(name="productid")
 	private ShoppingProductBean product;
 
-	@Column(name="productTotalPrice")
+	@Column(name="producttotalprice")
 	private int productTotalPrice;
 	
-	@Column(name="productQuantity")
+	@Column(name="productquantity")
 	private int productQuantity;
 	
 	public ShoppingProductDetailBean() {
@@ -70,6 +70,48 @@ public class ShoppingProductDetailBean {
 	public void setProductQuantity(int productQuantity) {
 		this.productQuantity = productQuantity;
 	}
+
+
+	@Override
+	public String toString() {
+		return "ShoppingProductDetailBean [id=" + id + ", product=" + product + ", productTotalPrice="
+				+ productTotalPrice + ", productQuantity=" + productQuantity + "]";
+	}
+
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + id;
+		result = prime * result + ((product == null) ? 0 : product.hashCode());
+		result = prime * result + productQuantity;
+		result = prime * result + productTotalPrice;
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ShoppingProductDetailBean other = (ShoppingProductDetailBean) obj;
+		/*if (id != other.id)
+			return false;*/
+		if (product == null) {
+			if (other.product != null)
+				return false;
+		} else if (!product.equals(other.product))
+			return false;
+		if (productQuantity != other.productQuantity)
+			return false;
+		if (productTotalPrice != other.productTotalPrice)
+			return false;
+		return true;
+	}
 	
-		
 }

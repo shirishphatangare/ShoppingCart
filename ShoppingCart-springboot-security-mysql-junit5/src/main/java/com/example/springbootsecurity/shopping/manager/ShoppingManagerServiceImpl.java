@@ -6,21 +6,19 @@ import org.springframework.stereotype.Service;
 import com.example.springbootsecurity.shopping.entity.ShoppingProductBean;
 
 @Service
-public class ShoppingManagerServiceImpl implements ShoppingManagerService {
+public class ShoppingManagerServiceImpl implements ShoppingEmployeeService {
 	
 	@Autowired
-	private ShoppingManagerDAO smd;
+	private ShoppingManagerDAO shoppingManagerDao;
 	
-	
-	/* (non-Javadoc)
-	 * @see com.shopping.manager.ShoppingManagerService#createProduct(com.shopping.entity.ShoppingProductBean)
-	 */
 	
 	public boolean createProduct(ShoppingProductBean product) {
 		boolean success = false;
 		try {
-			smd.createProduct(product);
-			success = true;
+			ShoppingProductBean newProduct = shoppingManagerDao.save(product);
+			if(newProduct.equals(product)) {
+				success = true;
+			}
 		}catch(Exception e) {
 			success = false;
 		}

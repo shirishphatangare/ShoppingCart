@@ -1,13 +1,11 @@
 package com.example.springbootsecurity.shopping.employee;
 
-import java.util.List;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.example.springbootsecurity.shopping.entity.ShoppingOrderDetailBean;
 
-public interface ShoppingEmployeeDAO {
-
-	List<ShoppingOrderDetailBean> showOrders();
-
-	ShoppingOrderDetailBean viewOrderDetails(int orderId);
+@Repository
+public interface ShoppingEmployeeDAO  extends CrudRepository<ShoppingOrderDetailBean, Long>{
 
 }

@@ -1,0 +1,71 @@
+logging: 
+  level: 
+    root: DEBUG
+
+server:
+  servlet: 
+    context-path: /ShoppingCart
+#  port: 8080
+  
+  
+spring: 
+   mvc: 
+    view: 
+      prefix: /WEB-INF/jsps/
+      suffix: .jsp  
+
+---
+
+spring: 
+  profiles: dev
+# When devTools enable h2-console below properties(h2.console.enabled and h2.console.path) are not required
+#  h2: 
+#    console:  
+#      enabled: true
+#      path: /h2
+  datasource: 
+    driver-class-name: org.h2.Driver
+    # DB_CLOSE_DELAY=-1 -> Keep the content of an in-memory database as long as the virtual machine is alive
+    # DB_CLOSE_ON_EXIT=FALSE -> Don't Close a Database even when the VM Exits
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password: 
+  jpa: 
+     properties: 
+       hibernate: 
+         dialect: org.hibernate.dialect.H2Dialect
+         show-sql: true
+         ddl-auto: none  # turn off automatic schema creation to avoid conflicts
+         current_session_context_class: thread 
+         hibernate.connection.pool_size: 11 
+logging: 
+  level: 
+    root: DEBUG              
+---
+
+spring: 
+  profiles: prod
+  datasource: 
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shoppingcart_schema?useSSL=false
+    username: root
+    password: admin123
+  jpa: 
+     properties: 
+       hibernate: 
+         dialect: org.hibernate.dialect.MySQL57Dialect
+         show-sql: true
+         current_session_context_class: thread 
+         hibernate.connection.pool_size: 11 
+logging: 
+  level: 
+    root: ERROR     
+         
+#------------------------------------------------------------------------------------------------------
+#Running H2 as a persisted database with Spring Boot
+         
+#spring.datasource.name=yourdbname
+#spring.datasource.driverClassName=org.h2.Driver
+#spring.datasource.initialize=false
+#spring.datasource.url=jdbc:h2:file:~/yourdbname;DB_CLOSE_ON_EXIT=FALSE;IFEXISTS=TRUE;DB_CLOSE_DELAY=-1;
+#spring.jpa.hibernate.ddl-auto = update         

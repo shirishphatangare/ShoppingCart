@@ -8,6 +8,6 @@ public interface ShoppingEmployeeService {
 
 	List<ShoppingOrderDetailBean> showOrders();
 
-	ShoppingOrderDetailBean viewOrderDetails(int orderId);
+	ShoppingOrderDetailBean viewOrderDetails(Long orderId);
 
 }
